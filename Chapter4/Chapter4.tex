@@ -1,0 +1,69 @@
+\documentclass[E:/Latex/ExtraWork/ComputerArchitechture/Report.tex]{subfiles}
+\usepackage[utf8]{inputenc}
+\PassOptionsToPackage{english, british}{babel}
+\usepackage[english, british]{babel}
+\usepackage{graphicx}
+\graphicspath{{../ComputerArchitechture/Chapter3/Figure/}}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{indentfirst}
+\usepackage{tabularx}
+\usepackage{amssymb}
+\usepackage{setspace}		%use \doublespacing
+\begin{document}
+	\begin{otherlanguage}{english}
+		\chapter{Kết Luận}
+			Tính chất quyết định cho viêc pipeline có hiệu quả hay không nằm ở tốc độ tính toán.
+			
+			Ở đây ta sẽ dùng hai thông số \textbf{speech up} và \textbf{throughput} để thể hiện.
+			
+			\begin{itemize}
+					\item \textbf{speech up} thể hiện tỉ lệ giữa thời gian thực hiện single và thời gian thực hiện pipeline, qua đó cho thấy mức độ cải thiện tốc độ của pipeline
+
+					$$speech up=\frac{Time Using Sequential Processing}{Time Using Pipeline Processing}=\frac{m_1 * t_1}{(n+m_2-1)*t_2}$$
+					- Trong đó: 
+						
+						n: số tầng pipeline
+						
+						$m_1,m_2$: lần lượt là số lệnh được thực hiện trong chương trình single và pipeline (cách lệnh lặp lại được tính riêng).
+						
+						$t_1$: thời gian thực hiện 1 lệnh trong đơn chu kì.
+						
+						$t_2$: thời gian thực hiện 1 tầng trong pipeline.
+
+					\item \textbf{throughput}: thể hiện số lệnh có thể thực hiện được trong 1 s.
+
+					$$throughput=\frac{m}{(n+m-1)*t}$$
+					- Trong đó:
+
+						m: là số lệnh được thực hiện trong chương trình.
+					
+						n: là số tầng pipeline (bằng 1 với single).
+					
+						t: thời gian thực hiện 1 câu lệnh với single và là thời gian thực hiện 1 tầng với pipeline.
+			\end{itemize}
+
+			Từ cơ sở trên, ta có:
+			 	\begin{itemize}
+					\item Single cycle
+					$$speech up=\frac{2457 * 800}{(5+3179-1)*200}=3.08765$$
+					$$throughput=\frac{2457}{2457*800}=1.25G task/s$$
+					\item Pipiline 5 tầng
+					$$throughput=\frac{3179}{(3179+5-1)*800}=5G task/s$$
+				\end{itemize}
+
+			Vậy tóm lại:
+				\begin{itemize}
+					\item Tốc độ xử lý tăng lên đáng kể gần gấp 4 lần so với trước khi pipeline.
+					\item Tỷ lệ thời gian single và pipeline chưa đủ lớn do chưa có các bộ dự đoán nhảy cũng như là bộ cache để lưu các dữ liệu cần dùng lại.
+				\end{itemize}
+
+
+
+			
+
+	\end{otherlanguage}
+
+\end{document}
